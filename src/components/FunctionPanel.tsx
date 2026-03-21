@@ -28,26 +28,32 @@ export function FunctionPanel({
   return (
     <Card title="Painel da função" subtitle={selected.description}>
       <div className="space-y-3">
-        <select
-          value={selectedId}
-          onChange={(e) => onChange(e.target.value)}
-          className="w-full rounded-lg border border-line bg-slate-950 p-2 text-sm"
-        >
-          {examples.map((example) => (
-            <option key={example.id} value={example.id}>
-              {example.name}
-            </option>
-          ))}
-        </select>
+        <div className="space-y-1">
+          <label className="text-xs text-slate-400">Escolha a função de exemplo</label>
+          <select
+            value={selectedId}
+            onChange={(e) => onChange(e.target.value)}
+            className="w-full rounded-lg border border-line bg-slate-950 p-2 text-sm"
+          >
+            {examples.map((example) => (
+              <option key={example.id} value={example.id}>
+                {example.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
-        <select
-          value={language}
-          onChange={(e) => onLanguageChange(e.target.value as LanguageId)}
-          className="w-full rounded-lg border border-line bg-slate-950 p-2 text-sm"
-        >
-          <option value="javascript">JavaScript</option>
-          <option value="portugol">Portugol</option>
-        </select>
+        <div className="space-y-1">
+          <label className="text-xs text-slate-400">Escolha a linguagem da função</label>
+          <select
+            value={language}
+            onChange={(e) => onLanguageChange(e.target.value as LanguageId)}
+            className="w-full rounded-lg border border-line bg-slate-950 p-2 text-sm"
+          >
+            <option value="javascript">JavaScript</option>
+            <option value="portugol">Portugol</option>
+          </select>
+        </div>
 
         {selected.id === "search" ? (
           <input

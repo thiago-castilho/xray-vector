@@ -15,7 +15,7 @@ export default function HomePage() {
 
   return (
     <main className="mx-auto max-w-7xl space-y-4 p-3 md:space-y-5 md:p-6">
-      <Header onReset={sim.resetAll} onPreset={sim.loadPreset} />
+      <Header onReset={sim.resetAll} />
 
       <section className="grid gap-4 lg:grid-cols-2">
         <InputPanel
@@ -52,11 +52,11 @@ export default function HomePage() {
         onSpeed={sim.setSpeed}
       />
 
-      <section className="grid gap-4 xl:grid-cols-5 xl:items-stretch">
-        <div className="xl:col-span-3 h-full">
+      <section className="grid gap-4 xl:grid-cols-12 xl:items-stretch">
+        <div className="xl:col-span-8 h-full">
           <XRayPanel codeLines={sim.selectedCodeLines} step={sim.currentStep} lineOffset={sim.codeLineOffset} />
         </div>
-        <div className="xl:col-span-2 h-full">
+        <div className="xl:col-span-4 h-full">
           <DidacticPanel step={sim.currentStep} />
         </div>
       </section>

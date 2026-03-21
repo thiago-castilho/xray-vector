@@ -44,6 +44,13 @@ Abra `http://localhost:3000`.
   - Passo anterior
   - Velocidade (250ms até 5000ms por passo)
 
+## Ações do cabeçalho
+
+- `Reiniciar tudo`:
+  - retorna os dados para o estado base (`5, 8, 2, 9, 1` e alvo `9`)
+  - limpa a execução atual (passos e ponteiro)
+  - mantém a função e linguagem atualmente selecionadas
+
 ## Observações sobre o Portugol
 
 - Os exemplos seguem o estilo do Portugol Webstudio com:

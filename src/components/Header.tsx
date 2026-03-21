@@ -1,11 +1,10 @@
-import { FlaskConical, RotateCcw, Sparkles } from "lucide-react";
+import { RotateCcw, Sparkles } from "lucide-react";
 
 interface HeaderProps {
   onReset: () => void;
-  onPreset: () => void;
 }
 
-export function Header({ onReset, onPreset }: HeaderProps) {
+export function Header({ onReset }: HeaderProps) {
   return (
     <header className="panel p-4 md:p-6">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -20,13 +19,6 @@ export function Header({ onReset, onPreset }: HeaderProps) {
           </p>
         </div>
         <div className="flex gap-2">
-          <button
-            onClick={onPreset}
-            className="inline-flex items-center gap-2 rounded-lg border border-line bg-slate-900 px-4 py-2 text-sm text-slate-100 transition hover:border-primary/40 hover:text-primary"
-          >
-            <FlaskConical size={16} />
-            Carregar exemplo
-          </button>
           <button
             onClick={onReset}
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-slate-950 transition hover:brightness-110"

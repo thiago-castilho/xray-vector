@@ -12,30 +12,32 @@ export function XRayPanel({ codeLines, step, lineOffset = 0 }: XRayPanelProps) {
   return (
     <Card title="X-Ray da execução" subtitle="Acompanhe linha, índice, valor e variáveis em tempo real.">
       {!step ? (
-        <p className="text-sm text-slate-400">Clique em Executar para gerar os passos da simulação.</p>
+        <div className="flex min-h-[330px] items-center justify-center rounded-xl border border-line bg-slate-950/40 p-4">
+          <p className="text-sm text-slate-400">Clique em Executar para gerar os passos da simulação.</p>
+        </div>
       ) : (
-        <div className="grid gap-4 lg:grid-cols-2">
+        <div className="space-y-4">
           <div className="overflow-hidden rounded-xl border border-line bg-slate-950">
             <div className="border-b border-line px-3 py-2 text-xs text-slate-400">Linha em execução</div>
-            <div className="p-3 text-sm">
+            <div className="p-3 text-sm font-mono">
               {codeLines.map((line, idx) => {
                 const lineNumber = idx + 1;
                 const active = lineNumber === step.line + lineOffset;
                 return (
                   <div key={`${idx}-${line}`} className={`rounded px-2 py-1 ${active ? "code-line-active" : ""}`}>
                     <span className="mr-3 inline-block w-6 text-slate-500">{String(lineNumber).padStart(2, "0")}</span>
-                    <span>{line}</span>
+                    <span className="whitespace-pre">{line}</span>
                   </div>
                 );
               })}
             </div>
           </div>
-          <div className="space-y-3">
-            <div className="rounded-xl border border-line bg-slate-950 p-3">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            <div className="rounded-xl border border-line bg-slate-950 p-3 xl:col-span-1">
               <p className="text-xs text-slate-400">Índice atual</p>
               <p className="text-lg font-semibold text-primary">{step.index ?? "-"}</p>
             </div>
-            <div className="rounded-xl border border-line bg-slate-950 p-3">
+            <div className="rounded-xl border border-line bg-slate-950 p-3 xl:col-span-1">
               <p className="text-xs text-slate-400">Valor lido</p>
               <p className="text-lg font-semibold text-accent">{String(step.currentValue ?? "-")}</p>
             </div>
@@ -43,7 +45,7 @@ export function XRayPanel({ codeLines, step, lineOffset = 0 }: XRayPanelProps) {
               key={step.explanation}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              className="rounded-xl border border-primary/25 bg-primary/10 p-3 text-sm text-slate-100"
+              className="rounded-xl border border-primary/25 bg-primary/10 p-3 text-sm text-slate-100 md:col-span-2 xl:col-span-1"
             >
               {step.explanation}
             </motion.div>

@@ -75,19 +75,6 @@ export function useSimulation() {
     clearLoop();
   };
 
-  const loadPreset = () => {
-    setArrayInput("5, 8, 2, 9, 1");
-    setSearchTargetInput("9");
-    setMountedArray([5, 8, 2, 9, 1]);
-    setExampleId("sum");
-    setLanguage("javascript");
-    setSteps([]);
-    setPointer(0);
-    setRunning(false);
-    setError(null);
-    clearLoop();
-  };
-
   const createSimulation = () => {
     if (!mountedArray.length) {
       setError("Monte um vetor antes de executar.");
@@ -174,7 +161,6 @@ export function useSimulation() {
     error,
     progress,
     mountArray,
-    loadPreset,
     createSimulation,
     next,
     prev,
