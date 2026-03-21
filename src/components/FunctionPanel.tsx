@@ -1,16 +1,29 @@
 import { Card } from "@/components/ui/Card";
-import { FunctionExample } from "@/types/simulator";
+import { FunctionExample, LanguageId } from "@/types/simulator";
 
 interface FunctionPanelProps {
   examples: FunctionExample[];
   selectedId: string;
   onChange: (id: string) => void;
+  language: LanguageId;
+  onLanguageChange: (language: LanguageId) => void;
+  codeLines: string[];
   targetInput: string;
   setTargetInput: (v: string) => void;
 }
 
-export function FunctionPanel({ examples, selectedId, onChange, targetInput, setTargetInput }: FunctionPanelProps) {
+export function FunctionPanel({
+  examples,
+  selectedId,
+  onChange,
+  language,
+  onLanguageChange,
+  codeLines,
+  targetInput,
+  setTargetInput
+}: FunctionPanelProps) {
   const selected = examples.find((e) => e.id === selectedId) ?? examples[0];
+  const plainCode = codeLines.join("\n");
 
   return (
     <Card title="Painel da função" subtitle={selected.description}>
@@ -27,6 +40,15 @@ export function FunctionPanel({ examples, selectedId, onChange, targetInput, set
           ))}
         </select>
 
+        <select
+          value={language}
+          onChange={(e) => onLanguageChange(e.target.value as LanguageId)}
+          className="w-full rounded-lg border border-line bg-slate-950 p-2 text-sm"
+        >
+          <option value="javascript">JavaScript</option>
+          <option value="portugol">Portugol</option>
+        </select>
+
         {selected.id === "search" ? (
           <input
             value={targetInput}
@@ -37,11 +59,19 @@ export function FunctionPanel({ examples, selectedId, onChange, targetInput, set
         ) : null}
 
         <div className="overflow-hidden rounded-xl border border-line bg-slate-950">
-          <div className="border-b border-line px-3 py-2 text-xs text-slate-400">Função atual</div>
-          <pre className="overflow-x-auto p-3 text-sm">
-            {selected.code.map((line, idx) => (
+          <div className="border-b border-line px-3 py-2 text-xs text-slate-400">
+            Função atual ({language === "javascript" ? "JavaScript" : "Portugol"})
+          </div>
+          <pre
+            className="overflow-x-auto p-3 text-sm"
+            onCopy={(event) => {
+              event.preventDefault();
+              event.clipboardData.setData("text/plain", plainCode);
+            }}
+          >
+            {codeLines.map((line, idx) => (
               <div key={`${idx}-${line}`} className="text-slate-200">
-                <span className="mr-3 text-slate-500">{idx + 1}</span>
+                <span className="mr-3 inline-block w-6 select-none text-slate-500">{String(idx + 1).padStart(2, "0")}</span>
                 <span>{line}</span>
               </div>
             ))}

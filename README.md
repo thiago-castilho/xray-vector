@@ -23,7 +23,11 @@ Abra `http://localhost:3000`.
 ## Funcionalidades
 
 - Entrada personalizada de vetor (números e textos)
+- Seletor de linguagem da função (JavaScript e Portugol Webstudio)
 - Simulação passo a passo com explicações amigáveis
+- Código exibido acompanha os dados montados pelo usuário
+- Numeração de linhas com layout didático (`01`, `02`, ...)
+- Ao copiar o código, os números de linha não são copiados
 - Modo X-Ray com:
   - linha atual
   - índice atual
@@ -38,7 +42,18 @@ Abra `http://localhost:3000`.
   - Reiniciar execução
   - Próximo passo
   - Passo anterior
-  - Velocidade
+  - Velocidade (250ms até 5000ms por passo)
+
+## Observações sobre o Portugol
+
+- Os exemplos seguem o estilo do Portugol Webstudio com:
+  - `programa { ... }`
+  - `inclua biblioteca Util`
+  - `funcao inicio()`
+  - `Util.numero_elementos(vetor)`
+  - `escreva(...)`
+- O exemplo de busca usa `posicao = -1` como valor padrão para "não encontrado".
+- O exemplo de inversão mostra progresso parcial no painel didático, em vez de exibir o resultado final logo no início.
 
 ## Funções de exemplo incluídas
 

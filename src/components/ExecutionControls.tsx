@@ -63,7 +63,7 @@ export function ExecutionControls({
           <input
             type="range"
             min={250}
-            max={2000}
+            max={5000}
             step={50}
             value={speed}
             onChange={(e) => onSpeed(Number(e.target.value))}

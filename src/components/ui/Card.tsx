@@ -5,11 +5,12 @@ interface CardProps {
   subtitle?: string;
   rightSlot?: ReactNode;
   children: ReactNode;
+  className?: string;
 }
 
-export function Card({ title, subtitle, rightSlot, children }: CardProps) {
+export function Card({ title, subtitle, rightSlot, children, className = "" }: CardProps) {
   return (
-    <section className="panel p-4 md:p-5">
+    <section className={`panel p-4 md:p-5 ${className}`}>
       <header className="mb-4 flex items-start justify-between gap-3">
         <div>
           <h2 className="text-lg font-semibold text-slate-100">{title}</h2>

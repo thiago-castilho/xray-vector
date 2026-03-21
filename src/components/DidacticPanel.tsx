@@ -10,7 +10,7 @@ export function DidacticPanel({ step }: DidacticPanelProps) {
   const output = step?.output ?? [];
 
   return (
-    <Card title="Painel didático" subtitle="Explicações simples para cada movimento da função.">
+    <Card title="Painel didático" subtitle="Explicações simples para cada movimento da função." className="h-full">
       {!step ? (
         <p className="text-sm text-slate-400">Quando a execução começar, você verá as mudanças de variáveis aqui.</p>
       ) : (
@@ -28,7 +28,9 @@ export function DidacticPanel({ step }: DidacticPanelProps) {
           </div>
 
           <div className="rounded-xl border border-line bg-slate-950 p-3">
-            <p className="text-xs uppercase tracking-wide text-slate-400">Resultado parcial/final</p>
+            <p className="text-xs uppercase tracking-wide text-slate-400">
+              {step.done ? "Resultado final" : "Resultado parcial"}
+            </p>
             <p className="mt-1 text-sm text-accent">{output.length ? JSON.stringify(output) : "Sem saída ainda"}</p>
           </div>
 

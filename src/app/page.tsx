@@ -30,6 +30,9 @@ export default function HomePage() {
           examples={sim.examples}
           selectedId={sim.exampleId}
           onChange={(id) => sim.setExampleId(id as ExampleId)}
+          language={sim.language}
+          onLanguageChange={sim.setLanguage}
+          codeLines={sim.selectedCodeLines}
           targetInput={sim.searchTargetInput}
           setTargetInput={sim.setSearchTargetInput}
         />
@@ -49,11 +52,11 @@ export default function HomePage() {
         onSpeed={sim.setSpeed}
       />
 
-      <section className="grid gap-4 xl:grid-cols-5">
-        <div className="xl:col-span-3">
-          <XRayPanel codeLines={sim.selectedExample.code} step={sim.currentStep} />
+      <section className="grid gap-4 xl:grid-cols-5 xl:items-stretch">
+        <div className="xl:col-span-3 h-full">
+          <XRayPanel codeLines={sim.selectedCodeLines} step={sim.currentStep} lineOffset={sim.codeLineOffset} />
         </div>
-        <div className="xl:col-span-2">
+        <div className="xl:col-span-2 h-full">
           <DidacticPanel step={sim.currentStep} />
         </div>
       </section>

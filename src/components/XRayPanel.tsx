@@ -5,9 +5,10 @@ import { Snapshot } from "@/types/simulator";
 interface XRayPanelProps {
   codeLines: string[];
   step: Snapshot | null;
+  lineOffset?: number;
 }
 
-export function XRayPanel({ codeLines, step }: XRayPanelProps) {
+export function XRayPanel({ codeLines, step, lineOffset = 0 }: XRayPanelProps) {
   return (
     <Card title="X-Ray da execução" subtitle="Acompanhe linha, índice, valor e variáveis em tempo real.">
       {!step ? (
@@ -19,10 +20,10 @@ export function XRayPanel({ codeLines, step }: XRayPanelProps) {
             <div className="p-3 text-sm">
               {codeLines.map((line, idx) => {
                 const lineNumber = idx + 1;
-                const active = lineNumber === step.line;
+                const active = lineNumber === step.line + lineOffset;
                 return (
                   <div key={`${idx}-${line}`} className={`rounded px-2 py-1 ${active ? "code-line-active" : ""}`}>
-                    <span className="mr-3 text-slate-500">{lineNumber}</span>
+                    <span className="mr-3 inline-block w-6 text-slate-500">{String(lineNumber).padStart(2, "0")}</span>
                     <span>{line}</span>
                   </div>
                 );

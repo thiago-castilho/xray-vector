@@ -8,6 +8,8 @@ export type ExampleId =
   | "countEven"
   | "reverse";
 
+export type LanguageId = "javascript" | "portugol";
+
 export interface Snapshot {
   line: number;
   index: number | null;
@@ -23,7 +25,7 @@ export interface FunctionExample {
   id: ExampleId;
   name: string;
   description: string;
-  code: string[];
+  code: Record<LanguageId, string[]>;
   createInitialVariables: (array: Primitive[]) => Record<string, Primitive | boolean | null>;
   run: (array: Primitive[], options: { target?: Primitive }) => Snapshot[];
 }

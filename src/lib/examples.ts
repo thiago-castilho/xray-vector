@@ -14,45 +14,59 @@ export const examples: FunctionExample[] = [
     id: "iterate",
     name: "Percorrer e exibir",
     description: "Visita cada posição do vetor e exibe os valores encontrados.",
-    code: [
-      "function percorrer(vetor) {",
-      "  const saida = [];",
-      "  for (let i = 0; i < vetor.length; i++) {",
-      "    const atual = vetor[i];",
-      "    saida.push(atual);",
-      "  }",
-      "  return saida;",
-      "}"
-    ],
-    createInitialVariables: () => ({ i: 0, atual: null, saida: "[]" }),
+    code: {
+      javascript: [
+        "function percorrer(vetor) {",
+        "  const saida = [];",
+        "  for (let contador = 0; contador < vetor.length; contador++) {",
+        "    const atual = vetor[contador];",
+        "    saida.push(atual);",
+        "  }",
+        "  return saida;",
+        "}"
+      ],
+      portugol: [
+        "programa {",
+        "  inclua biblioteca Util",
+        "",
+        "  funcao inicio() {",
+        "    {{VECTOR_DECLARATION}}",
+        "    para (inteiro contador = 0; contador < Util.numero_elementos(vetor); contador++) {",
+        "      escreva(\"Indice \", contador, \" -> \", vetor[contador], \"\\n\")",
+        "    }",
+        "  }",
+        "}"
+      ]
+    },
+    createInitialVariables: () => ({ contador: 0, atual: null, saida: "[]" }),
     run: (array) => {
       const steps: Snapshot[] = [];
       const output: Primitive[] = [];
-      for (let i = 0; i < array.length; i++) {
+      for (let contador = 0; contador < array.length; contador++) {
         steps.push({
           line: 3,
-          index: i,
-          currentValue: array[i],
-          variables: { i, atual: null, saida: `[${output.join(", ")}]` },
+          index: contador,
+          currentValue: array[contador],
+          variables: { contador, atual: null, saida: `[${output.join(", ")}]` },
           array: clone(array),
           output: clone(output),
-          explanation: `Agora a função está acessando a posição ${i} do vetor.`
+          explanation: `Agora a função está acessando a posição ${contador} do vetor.`
         });
         steps.push({
           line: 4,
-          index: i,
-          currentValue: array[i],
-          variables: { i, atual: array[i], saida: `[${output.join(", ")}]` },
+          index: contador,
+          currentValue: array[contador],
+          variables: { contador, atual: array[contador], saida: `[${output.join(", ")}]` },
           array: clone(array),
           output: clone(output),
-          explanation: `O valor encontrado nessa posição é ${String(array[i])}.`
+          explanation: `O valor encontrado nessa posição é ${String(array[contador])}.`
         });
-        output.push(array[i]);
+        output.push(array[contador]);
         steps.push({
           line: 5,
-          index: i,
-          currentValue: array[i],
-          variables: { i, atual: array[i], saida: `[${output.join(", ")}]` },
+          index: contador,
+          currentValue: array[contador],
+          variables: { contador, atual: array[contador], saida: `[${output.join(", ")}]` },
           array: clone(array),
           output: clone(output),
           explanation: "Esse valor foi enviado para a saída parcial."
@@ -62,7 +76,7 @@ export const examples: FunctionExample[] = [
         line: 7,
         index: null,
         currentValue: null,
-        variables: { i: array.length, atual: null, saida: `[${output.join(", ")}]` },
+        variables: { contador: array.length, atual: null, saida: `[${output.join(", ")}]` },
         array: clone(array),
         output: clone(output),
         explanation: "Fim da execução. A função retorna todos os elementos."
@@ -74,36 +88,52 @@ export const examples: FunctionExample[] = [
     id: "sum",
     name: "Somar elementos",
     description: "Acumula todos os valores numéricos do vetor em uma variável total.",
-    code: [
-      "function somar(vetor) {",
-      "  let total = 0;",
-      "  for (let i = 0; i < vetor.length; i++) {",
-      "    total = total + Number(vetor[i]);",
-      "  }",
-      "  return total;",
-      "}"
-    ],
-    createInitialVariables: () => ({ i: 0, total: 0 }),
+    code: {
+      javascript: [
+        "function somar(vetor) {",
+        "  let total = 0;",
+        "  for (let contador = 0; contador < vetor.length; contador++) {",
+        "    total = total + Number(vetor[contador]);",
+        "  }",
+        "  return total;",
+        "}"
+      ],
+      portugol: [
+        "programa {",
+        "  inclua biblioteca Util",
+        "",
+        "  funcao inicio() {",
+        "    {{VECTOR_DECLARATION}}",
+        "    inteiro total = 0",
+        "    para (inteiro contador = 0; contador < Util.numero_elementos(vetor); contador++) {",
+        "      total = total + vetor[contador]",
+        "    }",
+        "    escreva(\"A soma total e: \", total)",
+        "  }",
+        "}"
+      ]
+    },
+    createInitialVariables: () => ({ contador: 0, total: 0 }),
     run: (array) => {
       const steps: Snapshot[] = [];
       let total = 0;
-      for (let i = 0; i < array.length; i++) {
-        const value = Number(array[i]) || 0;
+      for (let contador = 0; contador < array.length; contador++) {
+        const value = Number(array[contador]) || 0;
         steps.push({
           line: 3,
-          index: i,
-          currentValue: array[i],
-          variables: { i, total },
+          index: contador,
+          currentValue: array[contador],
+          variables: { contador, total },
           array: clone(array),
           output: [total],
-          explanation: `Estamos lendo o índice ${i}.`
+          explanation: `Estamos lendo o índice ${contador}.`
         });
         total += value;
         steps.push({
           line: 4,
-          index: i,
-          currentValue: array[i],
-          variables: { i, total },
+          index: contador,
+          currentValue: array[contador],
+          variables: { contador, total },
           array: clone(array),
           output: [total],
           explanation: `O valor ${value} foi somado. Total parcial = ${total}.`
@@ -113,7 +143,7 @@ export const examples: FunctionExample[] = [
         line: 6,
         index: null,
         currentValue: null,
-        variables: { i: array.length, total },
+        variables: { contador: array.length, total },
         array: clone(array),
         output: [total],
         explanation: `Resultado final da soma: ${total}.`
@@ -125,36 +155,55 @@ export const examples: FunctionExample[] = [
     id: "search",
     name: "Buscar valor",
     description: "Procura o primeiro índice que contém o valor desejado.",
-    code: [
-      "function buscar(vetor, alvo) {",
-      "  for (let i = 0; i < vetor.length; i++) {",
-      "    if (vetor[i] === alvo) {",
-      "      return i;",
-      "    }",
-      "  }",
-      "  return -1;",
-      "}"
-    ],
-    createInitialVariables: () => ({ i: 0, encontrado: false, alvo: null }),
+    code: {
+      javascript: [
+        "function buscar(vetor, alvo) {",
+        "  for (let contador = 0; contador < vetor.length; contador++) {",
+        "    if (vetor[contador] === alvo) {",
+        "      return contador;",
+        "    }",
+        "  }",
+        "  return -1;",
+        "}"
+      ],
+      portugol: [
+        "programa {",
+        "  inclua biblioteca Util",
+        "",
+        "  funcao inicio() {",
+        "    {{VECTOR_DECLARATION}}",
+        "    {{TARGET_DECLARATION}}",
+        "    inteiro posicao = -1",
+        "    para (inteiro contador = 0; contador < Util.numero_elementos(vetor); contador++) {",
+        "      se (vetor[contador] == alvo) {",
+        "        posicao = contador",
+        "      }",
+        "    }",
+        "    escreva(\"Posicao encontrada: \", posicao)",
+        "  }",
+        "}"
+      ]
+    },
+    createInitialVariables: () => ({ contador: 0, encontrado: false, alvo: null }),
     run: (array, options) => {
       const steps: Snapshot[] = [];
       const alvo = options.target ?? array[0] ?? null;
-      for (let i = 0; i < array.length; i++) {
+      for (let contador = 0; contador < array.length; contador++) {
         steps.push({
           line: 2,
-          index: i,
-          currentValue: array[i],
-          variables: { i, encontrado: false, alvo },
+          index: contador,
+          currentValue: array[contador],
+          variables: { contador, encontrado: false, alvo },
           array: clone(array),
           output: [],
-          explanation: `Verificando se o índice ${i} contém o valor procurado.`
+          explanation: `Verificando se o índice ${contador} contém o valor procurado.`
         });
-        const matched = array[i] === alvo;
+        const matched = array[contador] === alvo;
         steps.push({
           line: 3,
-          index: i,
-          currentValue: array[i],
-          variables: { i, encontrado: matched, alvo },
+          index: contador,
+          currentValue: array[contador],
+          variables: { contador, encontrado: matched, alvo },
           array: clone(array),
           output: [],
           explanation: matched
@@ -164,12 +213,12 @@ export const examples: FunctionExample[] = [
         if (matched) {
           steps.push({
             line: 4,
-            index: i,
-            currentValue: array[i],
-            variables: { i, encontrado: true, alvo },
+            index: contador,
+            currentValue: array[contador],
+            variables: { contador, encontrado: true, alvo },
             array: clone(array),
-            output: [i],
-            explanation: `A função retorna o índice ${i}.`
+            output: [contador],
+            explanation: `A função retorna o índice ${contador}.`
           });
           return markDone(steps);
         }
@@ -178,7 +227,7 @@ export const examples: FunctionExample[] = [
         line: 7,
         index: null,
         currentValue: null,
-        variables: { i: array.length, encontrado: false, alvo },
+        variables: { contador: array.length, encontrado: false, alvo },
         array: clone(array),
         output: [-1],
         explanation: "Fim da busca. O valor não foi encontrado."
@@ -190,28 +239,46 @@ export const examples: FunctionExample[] = [
     id: "max",
     name: "Encontrar maior",
     description: "Compara os elementos e mantém o maior valor visto até o momento.",
-    code: [
-      "function maior(vetor) {",
-      "  let maior = Number(vetor[0]);",
-      "  for (let i = 1; i < vetor.length; i++) {",
-      "    if (Number(vetor[i]) > maior) {",
-      "      maior = Number(vetor[i]);",
-      "    }",
-      "  }",
-      "  return maior;",
-      "}"
-    ],
-    createInitialVariables: (array) => ({ i: 1, maior: Number(array[0] ?? 0) }),
+    code: {
+      javascript: [
+        "function maior(vetor) {",
+        "  let maior = Number(vetor[0]);",
+        "  for (let contador = 1; contador < vetor.length; contador++) {",
+        "    if (Number(vetor[contador]) > maior) {",
+        "      maior = Number(vetor[contador]);",
+        "    }",
+        "  }",
+        "  return maior;",
+        "}"
+      ],
+      portugol: [
+        "programa {",
+        "  inclua biblioteca Util",
+        "",
+        "  funcao inicio() {",
+        "    {{VECTOR_DECLARATION}}",
+        "    inteiro maior = vetor[0]",
+        "    para (inteiro contador = 1; contador < Util.numero_elementos(vetor); contador++) {",
+        "      se (vetor[contador] > maior) {",
+        "        maior = vetor[contador]",
+        "      }",
+        "    }",
+        "    escreva(\"Maior valor: \", maior)",
+        "  }",
+        "}"
+      ]
+    },
+    createInitialVariables: (array) => ({ contador: 1, maior: Number(array[0] ?? 0) }),
     run: (array) => {
       const steps: Snapshot[] = [];
       let maior = Number(array[0] ?? 0);
-      for (let i = 1; i < array.length; i++) {
-        const value = Number(array[i]) || 0;
+      for (let contador = 1; contador < array.length; contador++) {
+        const value = Number(array[contador]) || 0;
         steps.push({
           line: 4,
-          index: i,
-          currentValue: array[i],
-          variables: { i, maior },
+          index: contador,
+          currentValue: array[contador],
+          variables: { contador, maior },
           array: clone(array),
           output: [maior],
           explanation: `Comparando ${value} com maior atual (${maior}).`
@@ -220,9 +287,9 @@ export const examples: FunctionExample[] = [
           maior = value;
           steps.push({
             line: 5,
-            index: i,
-            currentValue: array[i],
-            variables: { i, maior },
+            index: contador,
+            currentValue: array[contador],
+            variables: { contador, maior },
             array: clone(array),
             output: [maior],
             explanation: `Novo maior encontrado: ${maior}.`
@@ -233,7 +300,7 @@ export const examples: FunctionExample[] = [
         line: 8,
         index: null,
         currentValue: null,
-        variables: { i: array.length, maior },
+        variables: { contador: array.length, maior },
         array: clone(array),
         output: [maior],
         explanation: `Resultado final: maior valor = ${maior}.`
@@ -245,41 +312,59 @@ export const examples: FunctionExample[] = [
     id: "countEven",
     name: "Contar pares",
     description: "Conta quantos elementos numéricos são pares.",
-    code: [
-      "function contarPares(vetor) {",
-      "  let contador = 0;",
-      "  for (let i = 0; i < vetor.length; i++) {",
-      "    if (Number(vetor[i]) % 2 === 0) contador++;",
-      "  }",
-      "  return contador;",
-      "}"
-    ],
-    createInitialVariables: () => ({ i: 0, contador: 0 }),
+    code: {
+      javascript: [
+        "function contarPares(vetor) {",
+        "  let totalPares = 0;",
+        "  for (let contador = 0; contador < vetor.length; contador++) {",
+        "    if (Number(vetor[contador]) % 2 === 0) totalPares++;",
+        "  }",
+        "  return totalPares;",
+        "}"
+      ],
+      portugol: [
+        "programa {",
+        "  inclua biblioteca Util",
+        "",
+        "  funcao inicio() {",
+        "    {{VECTOR_DECLARATION}}",
+        "    inteiro totalPares = 0",
+        "    para (inteiro contador = 0; contador < Util.numero_elementos(vetor); contador++) {",
+        "      se (vetor[contador] % 2 == 0) {",
+        "        totalPares = totalPares + 1",
+        "      }",
+        "    }",
+        "    escreva(\"Quantidade de pares: \", totalPares)",
+        "  }",
+        "}"
+      ]
+    },
+    createInitialVariables: () => ({ contador: 0, totalPares: 0 }),
     run: (array) => {
       const steps: Snapshot[] = [];
-      let contador = 0;
-      for (let i = 0; i < array.length; i++) {
-        const value = Number(array[i]);
+      let totalPares = 0;
+      for (let contador = 0; contador < array.length; contador++) {
+        const value = Number(array[contador]);
         const isPair = !Number.isNaN(value) && value % 2 === 0;
         steps.push({
           line: 4,
-          index: i,
-          currentValue: array[i],
-          variables: { i, contador, par: isPair },
+          index: contador,
+          currentValue: array[contador],
+          variables: { contador, totalPares, par: isPair },
           array: clone(array),
-          output: [contador],
-          explanation: `Testando se ${String(array[i])} é par.`
+          output: [totalPares],
+          explanation: `Testando se ${String(array[contador])} é par.`
         });
         if (isPair) {
-          contador += 1;
+          totalPares += 1;
           steps.push({
             line: 4,
-            index: i,
-            currentValue: array[i],
-            variables: { i, contador, par: true },
+            index: contador,
+            currentValue: array[contador],
+            variables: { contador, totalPares, par: true },
             array: clone(array),
-            output: [contador],
-            explanation: "Valor par detectado. Contador foi incrementado."
+            output: [totalPares],
+            explanation: "Valor par detectado. Total de pares foi incrementado."
           });
         }
       }
@@ -287,10 +372,10 @@ export const examples: FunctionExample[] = [
         line: 6,
         index: null,
         currentValue: null,
-        variables: { i: array.length, contador },
+        variables: { contador: array.length, totalPares },
         array: clone(array),
-        output: [contador],
-        explanation: `Quantidade final de pares: ${contador}.`
+        output: [totalPares],
+        explanation: `Quantidade final de pares: ${totalPares}.`
       });
       return markDone(steps);
     }
@@ -299,24 +384,46 @@ export const examples: FunctionExample[] = [
     id: "reverse",
     name: "Inverter vetor",
     description: "Troca os elementos de ponta a ponta até inverter a ordem.",
-    code: [
-      "function inverter(vetor) {",
-      "  let inicio = 0;",
-      "  let fim = vetor.length - 1;",
-      "  while (inicio < fim) {",
-      "    const aux = vetor[inicio];",
-      "    vetor[inicio] = vetor[fim];",
-      "    vetor[fim] = aux;",
-      "    inicio++;",
-      "    fim--;",
-      "  }",
-      "  return vetor;",
-      "}"
-    ],
+    code: {
+      javascript: [
+        "function inverter(vetor) {",
+        "  let inicio = 0;",
+        "  let fim = vetor.length - 1;",
+        "  while (inicio < fim) {",
+        "    const aux = vetor[inicio];",
+        "    vetor[inicio] = vetor[fim];",
+        "    vetor[fim] = aux;",
+        "    inicio++;",
+        "    fim--;",
+        "  }",
+        "  return vetor;",
+        "}"
+      ],
+      portugol: [
+        "programa {",
+        "  inclua biblioteca Util",
+        "",
+        "  funcao inicio() {",
+        "    {{VECTOR_DECLARATION}}",
+        "    inteiro inicio = 0",
+        "    inteiro fim = Util.numero_elementos(vetor) - 1",
+        "    enquanto (inicio < fim) {",
+        "      inteiro aux = vetor[inicio]",
+        "      vetor[inicio] = vetor[fim]",
+        "      vetor[fim] = aux",
+        "      inicio = inicio + 1",
+        "      fim = fim - 1",
+        "    }",
+        "    escreva(\"Vetor invertido: \", vetor)",
+        "  }",
+        "}"
+      ]
+    },
     createInitialVariables: (array) => ({ inicio: 0, fim: array.length - 1, aux: null }),
     run: (array) => {
       const steps: Snapshot[] = [];
       const work = clone(array);
+      const parcial: Primitive[] = Array.from({ length: work.length }, () => "_");
       let inicio = 0;
       let fim = work.length - 1;
       while (inicio < fim) {
@@ -326,19 +433,21 @@ export const examples: FunctionExample[] = [
           currentValue: work[inicio],
           variables: { inicio, fim, aux: null },
           array: clone(work),
-          output: clone(work),
+          output: clone(parcial),
           explanation: `Comparando ponteiros: inicio=${inicio}, fim=${fim}.`
         });
         const aux = work[inicio];
         work[inicio] = work[fim];
         work[fim] = aux;
+        parcial[inicio] = work[inicio];
+        parcial[fim] = work[fim];
         steps.push({
           line: 6,
           index: inicio,
           currentValue: work[inicio],
           variables: { inicio, fim, aux },
           array: clone(work),
-          output: clone(work),
+          output: clone(parcial),
           explanation: "Troca realizada entre as extremidades."
         });
         inicio += 1;
@@ -349,7 +458,7 @@ export const examples: FunctionExample[] = [
           currentValue: work[inicio] ?? null,
           variables: { inicio, fim, aux: null },
           array: clone(work),
-          output: clone(work),
+          output: clone(parcial),
           explanation: "Ponteiros atualizados para a próxima troca."
         });
       }
