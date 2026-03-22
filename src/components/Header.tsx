@@ -1,5 +1,7 @@
 import { RotateCcw, Sparkles } from "lucide-react";
 
+import { VectorIntroModal } from "@/components/VectorIntroModal";
+
 interface HeaderProps {
   onReset: () => void;
 }
@@ -18,7 +20,8 @@ export function Header({ onReset }: HeaderProps) {
             Veja o que acontece por dentro da função, linha por linha, com foco didático para iniciantes.
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap items-center justify-end gap-2">
+          <VectorIntroModal />
           <button
             onClick={onReset}
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-slate-950 transition hover:brightness-110"

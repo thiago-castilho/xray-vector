@@ -22,6 +22,7 @@ Abra `http://localhost:3000`.
 
 ## Funcionalidades
 
+- Ajuda contextual **“O que é um vetor?”** (modal com explicação simples, exemplo em Portugol e analogia)
 - Entrada personalizada de vetor (números e textos)
 - Seletor de linguagem da função (JavaScript e Portugol Webstudio)
 - Simulação passo a passo com explicações amigáveis
