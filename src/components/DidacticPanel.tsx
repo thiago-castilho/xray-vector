@@ -14,7 +14,7 @@ export function DidacticPanel({ step }: DidacticPanelProps) {
       {!step ? (
         <p className="text-sm text-slate-400">Quando a execução começar, você verá as mudanças de variáveis aqui.</p>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-4" aria-live="polite" aria-atomic="false">
           <div className="rounded-xl border border-line bg-slate-950 p-3">
             <p className="mb-2 text-xs uppercase tracking-wide text-slate-400">Variáveis auxiliares</p>
             <div className="grid gap-2 sm:grid-cols-2">

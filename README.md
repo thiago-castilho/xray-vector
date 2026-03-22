@@ -20,6 +20,15 @@ npm run dev
 
 Abra `http://localhost:3000`.
 
+## Acessibilidade
+
+- Link **“Pular para o conteúdo principal”** (visível ao navegar com teclado)
+- **Foco visível** (`:focus-visible`) e estados **desabilitados** coerentes nos controles da simulação
+- Formulários com **rótulos** ligados aos campos, erros em **`role="alert"`**, regiões com **`aria-live`** onde o conteúdo muda
+- Modal **“O que é um vetor?”** com `aria-modal`, retorno de foco ao fechar e `aria-expanded` no botão
+- **Atalhos do teclado** (botão **Atalhos** no cabeçalho): painel com lista e suporte a teclas como `E`, `P`, `C`, setas, `R`, `Shift+R`, `?`, `F1`, `Ctrl+/`
+- Código e listas com **papéis ARIA** adequados; animações respeitam **`prefers-reduced-motion`**
+
 ## Funcionalidades
 
 - Ajuda contextual **“O que é um vetor?”** (modal com explicação simples, exemplo em Portugol e analogia)

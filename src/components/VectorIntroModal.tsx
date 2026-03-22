@@ -9,9 +9,14 @@ export function VectorIntroModal() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const titleId = useId();
+  const descriptionId = useId();
 
-  const close = useCallback(() => setOpen(false), []);
+  const close = useCallback(() => {
+    setOpen(false);
+    requestAnimationFrame(() => triggerRef.current?.focus());
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -60,6 +65,7 @@ export function VectorIntroModal() {
                   role="dialog"
                   aria-modal="true"
                   aria-labelledby={titleId}
+                  aria-describedby={descriptionId}
                   className="relative z-[101] w-full max-w-lg overflow-hidden rounded-2xl border border-line bg-slate-950/90 shadow-[0_24px_80px_rgba(0,0,0,0.55)] backdrop-blur-xl"
                   initial={{ opacity: 0, y: 16, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -76,7 +82,9 @@ export function VectorIntroModal() {
                           <h2 id={titleId} className="text-lg font-semibold text-white">
                             O que é um vetor?
                           </h2>
-                          <p className="text-xs text-slate-400">Uma explicação bem direta para quem está começando.</p>
+                          <p id={descriptionId} className="text-xs text-slate-400">
+                            Uma explicação bem direta para quem está começando.
+                          </p>
                         </div>
                       </div>
                       <button
@@ -158,10 +166,12 @@ export function VectorIntroModal() {
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen(true)}
         className="inline-flex items-center gap-2 rounded-lg border border-line bg-slate-900/60 px-3 py-2 text-sm text-slate-100 transition hover:border-primary/35 hover:bg-slate-900 hover:text-white"
         aria-haspopup="dialog"
+        aria-expanded={open}
       >
         <BookOpen size={16} className="text-primary" aria-hidden />
         O que é um vetor?
