@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/Card";
+import { useClientReducedMotion } from "@/hooks/useClientReducedMotion";
 import { Snapshot } from "@/types/simulator";
 
 interface XRayPanelProps {
@@ -11,7 +12,7 @@ interface XRayPanelProps {
 }
 
 export function XRayPanel({ codeLines, step, lineOffset = 0 }: XRayPanelProps) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useClientReducedMotion();
 
   return (
     <Card title="X-Ray da execução" subtitle="Acompanhe linha, índice, valor e variáveis em tempo real.">

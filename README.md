@@ -2,6 +2,10 @@
 
 Aplicação web didática para visualizar, passo a passo, o funcionamento de funções com vetores em programação.
 
+## Repositório no GitHub
+
+Código-fonte, issues e histórico de commits: **[github.com/thiago-castilho/xray-vector](https://github.com/thiago-castilho/xray-vector)**
+
 ## Stack
 
 - Next.js (App Router)
@@ -31,6 +35,7 @@ Abra `http://localhost:3000`.
 
 ## Funcionalidades
 
+- Rodapé no site com **links para o repositório**, **issues** e o guia **Como contribuir** no GitHub
 - Ajuda contextual **“O que é um vetor?”** (modal com explicação simples, exemplo em Portugol e analogia)
 - Entrada personalizada de vetor (números e textos)
 - Seletor de linguagem da função (JavaScript e Portugol Webstudio)
@@ -107,6 +112,38 @@ src/
   types/
     simulator.ts
 ```
+
+## Como contribuir
+
+Contribuições são bem-vindas: correções, melhorias de acessibilidade, novos exemplos de funções, textos didáticos, traduções ou ajustes de UX.
+
+1. **Faça um fork** do repositório: [thiago-castilho/xray-vector](https://github.com/thiago-castilho/xray-vector)
+2. **Crie uma branch** para sua alteração, por exemplo: `feat/minha-melhoria` ou `fix/correcao-x`
+3. **Instale e rode localmente** (Node.js 20+):
+
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+4. Antes de abrir o PR, verifique:
+
+   ```bash
+   npm run lint
+   npm run build
+   ```
+
+5. **Abra um Pull Request** descrevendo o que mudou e o porquê. Se resolver um bug ou implementar uma ideia já discutida, referencie a **issue** correspondente.
+
+**Sugestões de contribuição**
+
+- Reportar bugs ou ideias em [**Issues**](https://github.com/thiago-castilho/xray-vector/issues)
+- Melhorar textos do painel didático ou do modal “O que é um vetor?”
+- Novos cenários em `src/lib/examples.ts` (com passos em JavaScript e, se possível, em Portugol)
+- Pequenos ajustes de acessibilidade ou de performance
+- Atualizar o README (incluindo esta seção) quando fizer sentido
+
+Seja respeitoso na descrição do PR e nas discussões; revisões podem pedir ajustes — isso é parte do processo.
 
 ## Objetivo pedagógico
 

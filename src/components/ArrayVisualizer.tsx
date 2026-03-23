@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/Card";
+import { useClientReducedMotion } from "@/hooks/useClientReducedMotion";
 import { Primitive, Snapshot } from "@/types/simulator";
 
 interface ArrayVisualizerProps {
@@ -10,7 +11,7 @@ interface ArrayVisualizerProps {
 }
 
 export function ArrayVisualizer({ mountedArray, step }: ArrayVisualizerProps) {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useClientReducedMotion();
   const visible = step?.array ?? mountedArray;
 
   return (

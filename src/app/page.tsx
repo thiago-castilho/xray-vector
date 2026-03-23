@@ -8,6 +8,7 @@ import { FunctionPanel } from "@/components/FunctionPanel";
 import { Header } from "@/components/Header";
 import { InputPanel } from "@/components/InputPanel";
 import { ShortcutsModal } from "@/components/ShortcutsModal";
+import { SiteFooter } from "@/components/SiteFooter";
 import { XRayPanel } from "@/components/XRayPanel";
 import { useAppKeyboardShortcuts } from "@/hooks/useAppKeyboardShortcuts";
 import { useSimulation } from "@/hooks/useSimulation";
@@ -103,6 +104,8 @@ export default function HomePage() {
       </section>
 
       <ArrayVisualizer mountedArray={sim.mountedArray} step={sim.currentStep} />
+
+      <SiteFooter />
     </main>
   );
 }
