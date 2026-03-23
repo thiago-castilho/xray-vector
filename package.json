@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/thiago-castilho/xray-vector.git"
   },
+  "homepage": "https://xray-vector.vercel.app/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

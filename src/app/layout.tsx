@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const siteUrl = "https://xray-vector.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Vector X-Ray",
-  description: "Simulador visual para entender vetores passo a passo."
+  description: "Simulador visual para entender vetores passo a passo.",
+  openGraph: {
+    title: "Vector X-Ray",
+    description: "Simulador visual para entender vetores passo a passo.",
+    url: siteUrl,
+    type: "website",
+    locale: "pt_BR"
+  }
 };
 
 export default function RootLayout({

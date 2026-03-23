@@ -2,6 +2,10 @@
 
 Aplicação web didática para visualizar, passo a passo, o funcionamento de funções com vetores em programação.
 
+## Demo ao vivo (Vercel)
+
+**[https://xray-vector.vercel.app/](https://xray-vector.vercel.app/)**
+
 ## Repositório no GitHub
 
 Código-fonte, issues e histórico de commits: **[github.com/thiago-castilho/xray-vector](https://github.com/thiago-castilho/xray-vector)**
